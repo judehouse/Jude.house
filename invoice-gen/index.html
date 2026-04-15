@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoice Generator | Jude House</title>
+    <meta
+      name="description"
+      content="A private invoice generator for Jude House with live preview, custom branding, and print-ready output."
+    />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="theme-color" content="#090707" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="icon" href="../img/black-block.svg" type="image/svg+xml" sizes="any" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body class="invoice-page">
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="invoice-topbar" aria-label="Primary">
+      <a class="invoice-topbar__brand" href="../index.html">Jude House ©</a>
+      <p class="invoice-topbar__note">Private invoice utility</p>
+      <div class="invoice-topbar__actions">
+        <button type="button" class="invoice-button invoice-button--ghost" data-action="reset">
+          Reset sample
+        </button>
+        <button type="button" class="invoice-button invoice-button--primary" data-action="print">
+          Print / Save PDF
+        </button>
+      </div>
+    </header>
+
+    <main id="content" class="invoice-shell">
+      <section class="invoice-intro">
+        <div class="invoice-intro__copy">
+          <p class="invoice-intro__eyebrow">Hidden page</p>
+          <h1>Invoice generator</h1>
+          <p class="invoice-intro__lede">
+            A simple branded invoice builder with live totals, editable line items, and browser
+            save support. It is meant to feel closer to QuickBooks than to a full accounting app.
+          </p>
+        </div>
+
+        <div class="invoice-intro__meta">
+          <div class="invoice-intro__chip">
+            <span>Invoice</span>
+            <strong data-preview="heroInvoiceNumber">INV-2026-001</strong>
+          </div>
+          <div class="invoice-intro__chip">
+            <span>Due</span>
+            <strong data-preview="heroDueDate">Apr 29, 2026</strong>
+          </div>
+          <div class="invoice-intro__chip invoice-intro__chip--accent">
+            <span>Total due</span>
+            <strong data-preview="heroTotalDue">$2,500.00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="invoice-layout" aria-label="Invoice workspace">
+        <form class="invoice-form" id="invoice-form" autocomplete="off">
+          <section class="panel">
+            <div class="panel__header">
+              <div>
+                <p class="panel__eyebrow">Branding</p>
+                <h2>From</h2>
+              </div>
+              <p class="panel__copy">These details appear in the invoice header and footer.</p>
+            </div>
+
+            <div class="field-grid field-grid--two">
+              <label class="field">
+                <span>Business name</span>
+                <input data-field="brandName" type="text" value="Jude House" />
+              </label>
+              <label class="field">
+                <span>Accent color</span>
+                <input data-field="accentColor" type="color" value="#fa98f0" />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Tagline</span>
+                <input
+                  data-field="brandTagline"
+                  type="text"
+                  value="Creative direction and production"
+                />
+              </label>
+            </div>
+
+            <div class="field-grid field-grid--two">
+              <label class="field">
+                <span>Email</span>
+                <input data-field="email" type="email" value="info@jude.house" />
+              </label>
+              <label class="field">
+                <span>Phone</span>
+                <input data-field="phone" type="tel" value="" placeholder="(555) 123-4567" />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Website</span>
+                <input data-field="website" type="text" value="jude.house" />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Business address</span>
+                <textarea data-field="address" rows="3">Atlanta, Georgia</textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__header">
+              <div>
+                <p class="panel__eyebrow">Billing</p>
+                <h2>Invoice details + client</h2>
+              </div>
+              <p class="panel__copy">Keep the invoice number, dates, and billing contact here.</p>
+            </div>
+
+            <div class="field-grid field-grid--three">
+              <label class="field">
+                <span>Invoice number</span>
+                <input data-field="invoiceNumber" type="text" value="INV-2026-001" />
+              </label>
+              <label class="field">
+                <span>Issue date</span>
+                <input data-field="issueDate" type="date" />
+              </label>
+              <label class="field">
+                <span>Due date</span>
+                <input data-field="dueDate" type="date" />
+              </label>
+            </div>
+
+            <div class="field-grid field-grid--two">
+              <label class="field">
+                <span>Project name</span>
+                <input data-field="projectName" type="text" value="Creative services" />
+              </label>
+              <label class="field">
+                <span>Currency</span>
+                <select data-field="currency">
+                  <option value="USD" selected>USD</option>
+                  <option value="CAD">CAD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                  <option value="AUD">AUD</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="field-grid field-grid--two">
+              <label class="field">
+                <span>Client name</span>
+                <input data-field="clientName" type="text" value="" placeholder="Client name" />
+              </label>
+              <label class="field">
+                <span>Client company</span>
+                <input data-field="clientCompany" type="text" value="" placeholder="Company" />
+              </label>
+            </div>
+
+            <div class="field-grid field-grid--two">
+              <label class="field">
+                <span>Client email</span>
+                <input
+                  data-field="clientEmail"
+                  type="email"
+                  value=""
+                  placeholder="client@example.com"
+                />
+              </label>
+              <label class="field">
+                <span>Client phone</span>
+                <input
+                  data-field="clientPhone"
+                  type="tel"
+                  value=""
+                  placeholder="(555) 123-4567"
+                />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Client address</span>
+                <textarea data-field="clientAddress" rows="3"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__header panel__header--split">
+              <div>
+                <p class="panel__eyebrow">Items</p>
+                <h2>Line items</h2>
+              </div>
+              <button type="button" class="invoice-button invoice-button--ghost invoice-button--small" data-action="add-item">
+                Add line
+              </button>
+            </div>
+
+            <div class="items-grid" aria-hidden="true">
+              <span>Item</span>
+              <span>Qty</span>
+              <span>Rate</span>
+              <span>Total</span>
+              <span></span>
+            </div>
+
+            <div class="items-list" data-items></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__header">
+              <div>
+                <p class="panel__eyebrow">Totals</p>
+                <h2>Summary + notes</h2>
+              </div>
+              <p class="panel__copy">Taxes and discounts are percentage based for quick edits.</p>
+            </div>
+
+            <div class="field-grid field-grid--three">
+              <label class="field">
+                <span>Tax rate (%)</span>
+                <input data-field="taxRate" type="number" min="0" step="0.01" value="0" />
+              </label>
+              <label class="field">
+                <span>Discount (%)</span>
+                <input data-field="discountRate" type="number" min="0" step="0.01" value="0" />
+              </label>
+              <label class="field">
+                <span>PO / ref</span>
+                <input data-field="purchaseOrder" type="text" value="" placeholder="Optional" />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Notes</span>
+                <textarea data-field="notes" rows="4">Thanks for the quick turnaround. Payment can be sent by ACH or card once approved.</textarea>
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Terms</span>
+                <textarea data-field="terms" rows="3">Due on receipt.</textarea>
+              </label>
+            </div>
+          </section>
+        </form>
+
+        <article class="invoice-sheet" aria-label="Invoice preview">
+          <header class="sheet__header">
+            <div class="sheet__brand">
+              <div class="sheet__logo" aria-hidden="true">
+                <img class="sheet__logo-image" src="../img/black-block.svg" alt="" />
+              </div>
+              <div class="sheet__brand-copy">
+                <p class="sheet__eyebrow">Invoice</p>
+                <h1 data-preview="brandName">Jude House</h1>
+                <p data-preview="brandTagline">Creative direction and production</p>
+              </div>
+            </div>
+
+            <dl class="sheet__meta">
+              <div>
+                <dt>Invoice #</dt>
+                <dd data-preview="invoiceNumber">INV-2026-001</dd>
+              </div>
+              <div>
+                <dt>Issued</dt>
+                <dd data-preview="issueDate">Apr 15, 2026</dd>
+              </div>
+              <div>
+                <dt>Due</dt>
+                <dd data-preview="dueDate">Apr 29, 2026</dd>
+              </div>
+              <div>
+                <dt>PO / ref</dt>
+                <dd data-preview="purchaseOrder">-</dd>
+              </div>
+            </dl>
+          </header>
+
+          <section class="sheet__contact">
+            <div>
+              <p class="sheet__label">From</p>
+              <p class="sheet__text" data-preview="brandContact">Jude House</p>
+            </div>
+            <div>
+              <p class="sheet__label">Bill to</p>
+              <p class="sheet__text" data-preview="clientContact">Add client details</p>
+            </div>
+            <div>
+              <p class="sheet__label">Project</p>
+              <p class="sheet__text" data-preview="projectName">Creative services</p>
+            </div>
+          </section>
+
+          <table class="sheet__items">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th class="sheet__num">Qty</th>
+                <th class="sheet__num">Rate</th>
+                <th class="sheet__num">Total</th>
+              </tr>
+            </thead>
+            <tbody data-preview="itemRows"></tbody>
+          </table>
+
+          <section class="sheet__summary">
+            <div class="sheet__memo">
+              <div>
+                <p class="sheet__label">Notes</p>
+                <p class="sheet__text sheet__text--spaced" data-preview="notes"></p>
+              </div>
+              <div>
+                <p class="sheet__label">Terms</p>
+                <p class="sheet__text sheet__text--spaced" data-preview="terms"></p>
+              </div>
+            </div>
+
+            <dl class="sheet__totals">
+              <div>
+                <dt>Subtotal</dt>
+                <dd data-preview="subtotal">$0.00</dd>
+              </div>
+              <div>
+                <dt>Tax</dt>
+                <dd data-preview="taxAmount">$0.00</dd>
+              </div>
+              <div>
+                <dt>Discount</dt>
+                <dd data-preview="discountAmount">$0.00</dd>
+              </div>
+              <div class="sheet__totals--accent">
+                <dt>Total due</dt>
+                <dd data-preview="totalDue">$0.00</dd>
+              </div>
+            </dl>
+          </section>
+
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

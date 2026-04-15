@@ -11,6 +11,7 @@ This is a static, single-page portfolio build with:
 - Update the featured video list in `main.js` if you add more work.
 - Replace `hello@judehouse.studio` in `index.html` with your real contact email.
 - Swap any wording in the hero, services, or contact sections to match your voice.
+- The private invoice tool lives at `invoice-gen/` and is intentionally noindexed and unlinked from the homepage.
 
 ## Local Preview
 

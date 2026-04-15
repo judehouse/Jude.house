@@ -2,6 +2,7 @@ const contactEmail = "info@jude.house";
 
 const projects = [
   {
+    sectionId: "work",
     id: "QRu_TqZyhFk",
     image: "img/image 56.png",
     title: "The Wedding of Canaan + Courtney",
@@ -11,6 +12,7 @@ const projects = [
     crop: "58% 40%",
   },
   {
+    sectionId: "photo",
     id: "-IIa-HQDqhk",
     image: "img/Screenshot 2026-04-14 at 4.42.29 PM 1.png",
     title: "The Wedding of Brandon + Desyre",
@@ -20,6 +22,7 @@ const projects = [
     crop: "50% 50%",
   },
   {
+    sectionId: "design",
     id: "2oJWRKuR9xE",
     image: "img/image 57.png",
     title: "The Dirt Turkey",
@@ -27,6 +30,16 @@ const projects = [
     year: "2025",
     bandClass: "showcase-band--design",
     crop: "50% 28%",
+  },
+  {
+    sectionId: "sermon",
+    id: "OivdIXQXF9Y",
+    image: "https://img.youtube.com/vi/OivdIXQXF9Y/hqdefault.jpg",
+    title: "Psalm 23",
+    displayTitle: "Psalm 23",
+    year: "2026",
+    bandClass: "showcase-band--design",
+    crop: "50% 50%",
   },
 ];
 
@@ -76,6 +89,10 @@ const featuredBrands = [
     href: "https://coastecoffee.com/",
   },
   {
+    name: "Sermon Notes",
+    href: "https://sermonotes.com/",
+  },
+  {
     name: "Your Mom",
     href: "your-mom.html",
     newTab: false,
@@ -118,7 +135,7 @@ function buildPreviewIframe(project) {
 }
 
 function buildWorkBand(project, index) {
-  const sectionId = index === 0 ? "work" : index === 1 ? "photo" : "design";
+  const sectionId = project.sectionId || `project-${index}`;
   const titleClass = index === 0 ? "showcase-band__lead-title" : "showcase-band__title";
   const yearClass = index === 0 ? "showcase-band__lead-year" : "showcase-band__year";
 
