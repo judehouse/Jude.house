@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jude House | Cinematic Portfolio</title>
+    <meta
+      name="description"
+      content="A dark, cinematic portfolio for Jude House with stacked full-width stills and a direct contact path."
+    />
+    <meta name="theme-color" content="#050505" />
+    <meta property="og:title" content="Jude House | Cinematic Portfolio" />
+    <meta
+      property="og:description"
+      content="Stacked stills, cinematic motion, and a minimal contact-first layout for Jude House."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23050505'/%3E%3Cpath d='M18 20h8v18c0 8-3.5 12-10 12v-7c3 0 4-1.7 4-5.2V20Zm20 0h8v8h-8v-8Zm0 12h8v18h-8V32Zm12 0h8v18h-8V32Z' fill='%23FA98F0'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="masthead" aria-label="Primary">
+      <a class="masthead__brand" href="#work">Jude House ©</a>
+      <a class="masthead__hire" href="#contact">Hire</a>
+    </header>
+
+    <main id="content" class="showcase">
+      <div class="showcase__bands" id="showcase-bands"></div>
+    </main>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="footer__left">jude.house</div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <button type="button">video</button>
+        <button type="button">photo</button>
+        <button type="button">design</button>
+      </nav>
+      <a class="footer__right" href="mailto:info@jude.house?subject=Project%20Inquiry">contact</a>
+    </footer>
+
+    <div class="video-modal" id="video-modal" aria-hidden="true">
+      <button class="video-modal__backdrop" type="button" data-close aria-label="Close video"></button>
+      <div class="video-modal__shell" role="dialog" aria-modal="true" aria-label="Video player">
+        <button class="video-modal__close" type="button" data-close aria-label="Close video">×</button>
+        <div class="video-modal__stage" id="video-modal-stage"></div>
+      </div>
+    </div>
+  </body>
+</html>
