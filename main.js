@@ -34,7 +34,7 @@ const projects = [
   {
     sectionId: "sermon",
     id: "OivdIXQXF9Y",
-    image: "https://img.youtube.com/vi/OivdIXQXF9Y/hqdefault.jpg",
+    image: "img/psalm-23-thumbnail.png",
     title: "Psalm 23",
     displayTitle: "Psalm 23",
     year: "2026",
@@ -270,6 +270,26 @@ function updateBrandCarousel() {
   track.style.setProperty("--brand-carousel-shift", `${baseWidth}px`);
 }
 
+function buildVideoEmbedSrc(project) {
+  const isMobilePlayback =
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(max-width: 700px)").matches;
+
+  const params = new URLSearchParams({
+    autoplay: "1",
+    controls: isMobilePlayback ? "0" : "1",
+    disablekb: "1",
+    fs: isMobilePlayback ? "0" : "1",
+    modestbranding: "1",
+    playsinline: "1",
+    rel: "0",
+    start: "0",
+    ...(isMobilePlayback ? { mute: "1" } : {}),
+  });
+
+  return `https://www.youtube-nocookie.com/embed/${project.id}?${params.toString()}`;
+}
+
 function renderShowcase() {
   bandsRoot.innerHTML = [...projects.map(buildWorkBand), buildBrandCarousel(), buildContactBand()].join("");
 }
@@ -283,7 +303,7 @@ function openVideo(index) {
 
   modalStage.innerHTML = `
     <iframe
-      src="https://www.youtube-nocookie.com/embed/${project.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+      src="${buildVideoEmbedSrc(project)}"
       title="${project.title}"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
@@ -293,6 +313,13 @@ function openVideo(index) {
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
+  const isMobilePlayback =
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(max-width: 700px)").matches;
+  if (isMobilePlayback && screen.orientation?.lock) {
+    screen.orientation.lock("landscape").catch(() => {});
+  }
 
   const closeButton = modal.querySelector(".video-modal__close");
   if (closeButton) {
@@ -305,6 +332,10 @@ function closeVideo() {
   modal.setAttribute("aria-hidden", "true");
   modalStage.innerHTML = "";
   document.body.style.overflow = "";
+
+  if (screen.orientation?.unlock) {
+    screen.orientation.unlock();
+  }
 
   if (lastTrigger) {
     lastTrigger.focus();
