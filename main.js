@@ -284,7 +284,6 @@ function buildVideoEmbedSrc(project) {
     playsinline: "1",
     rel: "0",
     start: "0",
-    ...(isMobilePlayback ? { mute: "1" } : {}),
   });
 
   return `https://www.youtube-nocookie.com/embed/${project.id}?${params.toString()}`;
