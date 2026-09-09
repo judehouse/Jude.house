@@ -98,6 +98,29 @@
             <a class="contact-band__email" href="mailto:info@jude.house?subject=Wedding%20Film%20Inquiry">info@jude.house</a>
           </div>
         </section>
+        <section class="inquiry-section" aria-labelledby="inquiry-title">
+          <div class="inquiry-section__intro">
+            <p class="section-kicker">Start a project</p>
+            <h2 id="inquiry-title">Tell me a little about what you’re making.</h2>
+            <p>For weddings, films, and the ideas that don’t fit neatly in a box yet.</p>
+          </div>
+          <form class="inquiry-form" action="https://formsubmit.co/info@jude.house" method="POST">
+            <input type="hidden" name="_subject" value="New Jude House project inquiry" />
+            <input type="hidden" name="_next" value="https://jude.house/thank-you.html" />
+            <input type="hidden" name="_template" value="table" />
+            <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="inquiry-form__grid">
+              <div class="form-field"><label for="inquiry-name">Name</label><input id="inquiry-name" name="name" autocomplete="name" required /></div>
+              <div class="form-field"><label for="inquiry-email">Email</label><input id="inquiry-email" name="email" type="email" autocomplete="email" required /></div>
+              <div class="form-field"><label for="inquiry-phone">Phone <span>(optional)</span></label><input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" /></div>
+              <div class="form-field"><label for="project-type">Project type</label><select id="project-type" name="project type" required><option value="" selected disabled>Select one</option><option>Wedding video</option><option>Event video</option><option>Film</option><option>Documentary</option><option>Commercial</option><option>Product video</option><option>Other</option></select></div>
+              <div class="form-field"><label for="project-date">Date <span>(optional)</span></label><input id="project-date" name="project date" type="date" /></div>
+              <div class="form-field"><label for="project-location">Location <span>(optional)</span></label><input id="project-location" name="location" autocomplete="address-level2" /></div>
+            </div>
+            <div class="form-field"><label for="project-details">What should I know?</label><textarea id="project-details" name="project details" rows="5" required placeholder="Tell me about the day, the project, or the idea."></textarea></div>
+            <button class="inquiry-form__submit" type="submit">Send inquiry <span aria-hidden="true">↗</span></button>
+          </form>
+        </section>
       </div>
     </main>
     <footer class="footer" aria-label="Footer">
