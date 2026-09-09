@@ -232,17 +232,19 @@
 .journal-list__copy { max-width: 36rem; margin: 0; color: var(--muted); font-size: 1.04rem; line-height: 1.55; }
 .journal-list__link { display: inline-block; margin-top: 1rem; color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
 
-.article-header { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, .85fr); gap: clamp(1.5rem, 5vw, 5rem); align-items: end; }
+.article-header { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, .85fr); gap: clamp(1.5rem, 5vw, 5rem); align-items: end; background: radial-gradient(circle at 72% 12%, rgba(250, 152, 240, .10), transparent 30rem), #050505; }
 .article-header__dek { max-width: 33rem; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.55; }
 .article-body { display: grid; grid-template-columns: minmax(0, .72fr) minmax(16rem, .28fr); gap: clamp(2rem, 8vw, 9rem); padding-top: clamp(3rem, 8vw, 7rem); padding-bottom: clamp(3rem, 8vw, 7rem); }
 .article-body__content { max-width: 45rem; font-size: 1.08rem; line-height: 1.62; }
+.article-body__content > h2 { position: relative; padding-left: 1.2rem; }
+.article-body__content > h2::before { position: absolute; top: .08em; bottom: .08em; left: 0; width: 2px; content: ""; background: var(--accent); }
 .article-body__content h2 { margin: 3rem 0 1rem; font-size: clamp(1.8rem, 3.7vw, 3rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; }
 .article-body__content h2:first-child { margin-top: 0; }
 .article-body__content p { margin: 0 0 1.25rem; }
 .article-body__content ul { margin: 0 0 1.5rem; padding-left: 1.2rem; }
 .article-body__content li { margin: .45rem 0; }
 .article-body__content a { color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
-.article-aside { align-self: start; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1rem 0; }
+.article-aside { position: sticky; top: 1.5rem; align-self: start; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1rem 0; }
 .article-aside p { margin: 0; color: var(--muted); line-height: 1.5; }
 .article-aside a { display: inline-block; margin-top: .8rem; color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
 .article-next { padding-top: 0; padding-bottom: clamp(3.5rem, 9vw, 8rem); }
