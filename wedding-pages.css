@@ -206,6 +206,49 @@
 .link-list li:last-child { border-bottom: 1px solid var(--line); }
 .link-list a { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; font-size: clamp(1rem, 1.8vw, 1.32rem); }
 .link-list span { color: var(--accent); }
+.planning-notes-link { margin: 0; }
+
+.journal-intro,
+.journal-list,
+.article-header,
+.article-body,
+.article-next {
+  padding-left: max(1rem, calc((100vw - 76rem) / 2));
+  padding-right: max(1rem, calc((100vw - 76rem) / 2));
+  background: #050505;
+}
+
+.journal-intro,
+.article-header { padding-top: clamp(7rem, 14vw, 11rem); padding-bottom: clamp(3rem, 7vw, 6rem); border-bottom: 1px solid var(--line); }
+.journal-intro h1,
+.article-header h1 { max-width: 12ch; margin: 0; font-size: clamp(3rem, 7vw, 6.2rem); font-weight: 500; letter-spacing: -.055em; line-height: .9; }
+.journal-intro > p:last-child { max-width: 36rem; margin: 1.5rem 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.55; }
+.journal-list { padding-top: 0; padding-bottom: clamp(3.5rem, 9vw, 8rem); }
+.journal-list article { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); gap: clamp(1.5rem, 5vw, 5rem); padding: clamp(2rem, 5vw, 4rem) 0; border-bottom: 1px solid var(--line); }
+.journal-list article:first-child { border-top: 0; }
+.journal-list h2 { margin: 0; font-size: clamp(2rem, 4.3vw, 3.7rem); font-weight: 500; letter-spacing: -.045em; line-height: .96; }
+.journal-list h2 a:hover { color: var(--accent); }
+.journal-list__meta, .article-meta { margin: 0 0 .75rem; color: var(--soft); font-family: var(--serif); }
+.journal-list__copy { max-width: 36rem; margin: 0; color: var(--muted); font-size: 1.04rem; line-height: 1.55; }
+.journal-list__link { display: inline-block; margin-top: 1rem; color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
+
+.article-header { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, .85fr); gap: clamp(1.5rem, 5vw, 5rem); align-items: end; }
+.article-header__dek { max-width: 33rem; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.55; }
+.article-body { display: grid; grid-template-columns: minmax(0, .72fr) minmax(16rem, .28fr); gap: clamp(2rem, 8vw, 9rem); padding-top: clamp(3rem, 8vw, 7rem); padding-bottom: clamp(3rem, 8vw, 7rem); }
+.article-body__content { max-width: 45rem; font-size: 1.08rem; line-height: 1.62; }
+.article-body__content h2 { margin: 3rem 0 1rem; font-size: clamp(1.8rem, 3.7vw, 3rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; }
+.article-body__content h2:first-child { margin-top: 0; }
+.article-body__content p { margin: 0 0 1.25rem; }
+.article-body__content ul { margin: 0 0 1.5rem; padding-left: 1.2rem; }
+.article-body__content li { margin: .45rem 0; }
+.article-body__content a { color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
+.article-aside { align-self: start; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1rem 0; }
+.article-aside p { margin: 0; color: var(--muted); line-height: 1.5; }
+.article-aside a { display: inline-block; margin-top: .8rem; color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
+.article-next { padding-top: 0; padding-bottom: clamp(3.5rem, 9vw, 8rem); }
+.article-next__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .8fr); gap: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.article-next h2 { margin: 0; font-size: clamp(1.7rem, 3.2vw, 2.7rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; }
+.article-next a { color: #fff; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: .13em; }
 
 .film-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); }
 .film-card { position: relative; min-height: clamp(24rem, 48vw, 38rem); overflow: hidden; background: #111; }
@@ -263,4 +306,5 @@
   .showcase-band__compact-copy h2 { max-width: 13ch; }
   .film-grid, .guide-grid { grid-template-columns: 1fr; }
   .tool-result__details { grid-template-columns: 1fr; }
+  .journal-list article, .article-header, .article-body, .article-next__inner { grid-template-columns: 1fr; }
 }
