@@ -154,7 +154,7 @@ img {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: #000;
+  background: transparent;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.32s ease;
@@ -376,8 +376,8 @@ img {
     filter: saturate(1.06) contrast(1.03) brightness(1.03);
   }
 
-  .showcase-band:hover .showcase-band__preview,
-  .showcase-band:focus-visible .showcase-band__preview {
+  .showcase-band:hover .showcase-band__preview.is-ready,
+  .showcase-band:focus-visible .showcase-band__preview.is-ready {
     opacity: 1;
   }
 

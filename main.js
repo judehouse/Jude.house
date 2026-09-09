@@ -24,23 +24,27 @@ function buildHoverPreview(videoId, title) {
     autoplay: "1",
     controls: "0",
     disablekb: "1",
+    enablejsapi: "1",
     end: "7",
     iv_load_policy: "3",
     loop: "1",
     modestbranding: "1",
     mute: "1",
+    origin: window.location.origin,
     playlist: videoId,
     playsinline: "1",
     rel: "0",
     start: "0",
   });
 
-  return `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}" title="${title} preview" allow="autoplay; encrypted-media; picture-in-picture" aria-hidden="true" tabindex="-1"></iframe>`;
+  return `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}" title="${title} preview" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="origin" aria-hidden="true" tabindex="-1"></iframe>`;
 }
 
 function initHoverPreviews() {
   const canPreview = window.matchMedia("(hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!canPreview) return;
+
+  const players = [];
 
   document.querySelectorAll("[data-video-preview-id]").forEach((card) => {
     const preview = card.querySelector(".showcase-band__preview");
@@ -49,6 +53,24 @@ function initHoverPreviews() {
     if (!preview || !videoId) return;
 
     preview.innerHTML = buildHoverPreview(videoId, title || "Wedding film");
+    const frame = preview.querySelector("iframe");
+    if (frame) players.push({ frame, preview });
+  });
+
+  window.addEventListener("message", (event) => {
+    if (event.origin !== "https://www.youtube.com" && event.origin !== "https://www.youtube-nocookie.com") return;
+    let message;
+    try {
+      message = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+    } catch {
+      return;
+    }
+    if (message?.event !== "onReady" && message?.event !== "onStateChange") return;
+    const player = players.find(({ frame }) => frame.contentWindow === event.source);
+    if (!player) return;
+
+    player.preview.classList.add("is-ready");
+    player.frame.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "playVideo", args: [] }), event.origin);
   });
 }
 
@@ -63,7 +85,7 @@ function openVideo(card) {
 
   const isMobile = window.matchMedia("(pointer: coarse)").matches || window.matchMedia("(max-width: 700px)").matches;
   const params = new URLSearchParams({ autoplay: "1", controls: isMobile ? "0" : "1", disablekb: "1", fs: isMobile ? "0" : "1", modestbranding: "1", playsinline: "1", rel: "0", start: "0" });
-  modalStage.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  modalStage.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin" allowfullscreen></iframe>`;
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
