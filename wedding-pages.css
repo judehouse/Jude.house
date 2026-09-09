@@ -197,7 +197,8 @@
 .guide-grid p { margin: 0; color: var(--muted); line-height: 1.5; }
 
 @media (max-width: 700px) {
-  .masthead__nav > a:not(.masthead__hire) { display: none; }
+  .masthead__nav { gap: .65rem; }
+  .masthead__nav > a:not(.masthead__hire) { display: inline; padding-top: .12rem; font-size: .8rem; }
   .homepage-hero { height: max(34rem, 92svh); }
   .homepage-hero__content, .showcase-band__feature-copy, .showcase-band__compact-copy { left: .9rem; right: .9rem; }
   .intro-band, .planning-band, .page-content, .tool-intro, .tool-shell { grid-template-columns: 1fr; }
